@@ -1,0 +1,79 @@
+<html>
+  <!--From https://codepen.io/frytyler/pen/EGdtg-->
+  <head>
+    <meta charset="UTF-8">
+    <title>ML API</title>
+    <link href='https://fonts.googleapis.com/css?family=Pacifico' rel='stylesheet' type='text/css'>
+  <link href='https://fonts.googleapis.com/css?family=Arimo' rel='stylesheet' type='text/css'>
+  <link href='https://fonts.googleapis.com/css?family=Hind:300' rel='stylesheet' type='text/css'>
+  <link href='https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300' rel='stylesheet' type='text/css'>
+    
+  </head>
+  
+<style>
+    body {
+      background-image: url('https://post.healthline.com/wp-content/uploads/2020/09/Blood_Donation-1200x549-facebook-1200x628.jpg');
+      background-repeat: no-repeat;
+      background-attachment: fixed;
+      background-size: cover;
+    }
+    div {
+      background-color: lightgrey;
+      background-position: 500px;
+      position: absolute;
+      background-clip: padding-box;
+      width: 300px;
+      padding: 50px;
+      margin: auto;
+      opacity: 1;
+      top: 50%;
+      left: 50%;
+      margin-right: -50%;
+      transform: translate(-50%, -50%)
+    }
+    h1 {
+      font: italic small-caps bold 20px Georgia, Garamond, serif;
+      text-align: center;
+      color: black;
+      font-size: 90px;
+      
+    }   
+</style>
+<body>
+  <h1 ><b>Save Our Soul</b></h1>
+  <div style="text-align: center"> 
+    <style>
+      p {
+        font: italic small-caps bold 20px Georgia, Garamond, serif;
+      }
+    </style>
+  
+  
+ 
+
+
+ <div class="login">
+    <h3>Predict Blood Donors</h3>
+
+     <!-- Main Input For Receiving Query to our ML -->
+    <form action="{{ url_for('predict')}}"method="post">
+        <input type="text" name="Months since the last donation" placeholder="Recency(months)" required="required" /><br><br>
+
+        <input type="text" name="Total number of donation" placeholder="Frequency(times)" required="required" /><br><br>
+		<input type="text" name="Total blood donated in c.c." placeholder="Monetary (c.c.)" required="required" /><br><br>
+		<input type="text" name="Months since the first donation" placeholder="Time(months)" required="required" /><br><br>
+
+
+        <button type="submit" class="btn btn-primary btn-block btn-large">Predict</button>
+    </form>
+
+   <br>
+   <br>
+   {{ prediction_text }}
+
+ </div>
+
+
+</div> 
+</body> 
+</html> 
