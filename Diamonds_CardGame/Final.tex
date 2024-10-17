@@ -1,0 +1,101 @@
+\documentclass[12pt]{beamer}
+\beamertemplatenavigationsymbolsempty
+\usetheme{Madrid}
+\usepackage[utf8]{inputenc}
+\usepackage{enumitem}
+\usepackage{ulem}
+\item{\center{\large{\textbf{BVRIT HYDERABAD COLLEGE OF ENGINEERING FOR WOMEN}}}
+\title{\textbf{26TH oct 2021}}
+\title{\textbf{DIAMONDS}}
+\author[Bvrith]{Y.Vijitha:20WH1A0483 \\K.Sai Tejaswi:20WH1A1206\\ B.Nandini:20WH1A0514\\ T.Harshitha:20WH1A6637\\ Ch.Abitha:20WH1A0440}
+\date{\textbf{TEAM 15}}
+
+\begin{document}
+
+\maketitle
+
+\section{Introduction}
+
+
+\begin{frame}{\LARGE{\textbf{RULES}}}
+        \begin{enumerate}[label = \arabic*)]
+	    \item Diamond cards are shuffled and kept aside.
+        \item Other Suit cards are shuffled and distributed to the players.
+        \item A diamond card is displayed to the players, player bidding with highest value card wins that diamond card and points.
+        \item Points are awarded to the players as follows:
+        \end{enumerate}
+        \begin{itemize}
+                \item Numbers(2 - 10): 3
+                \item Royals(Jack, Queen, King): 10
+                \item Ace: 20
+                \item If two players bid with the same value card, the points are divided among them.
+        \end{itemize}
+\end{frame}
+
+\begin{frame}
+	\frametitle{APPROACH}
+	\begin{enumerate}[label = \arabic*)]
+	    \item At first we defined two functions diamondDeck and remainingDeck
+        \item By using random.shuffle() built in function both decks will be shuffled 
+        \item Then remainingDeck will be distributed equally among three players by slicing the list.
+        \item The values and points are assigned to the cards using dictionaries.
+        \item For updating the players score based on the diamond card maximum function is used to return the highest player.
+        \item Based on the instructions of the game conditional statements are used to divide scores among players.
+	\end{enumerate}
+\end{frame}
+\begin{frame}
+    \frametitle{LEARNINGS}
+    \begin{itemize}
+        \item[$\bullet$] Git version controls
+        \item[$\bullet$] Pygame
+        \item[$\bullet$] Reffered to different modules from python Documentation
+    \end{itemize}
+\end{frame}
+\begin{frame}
+    \frametitle{CHALLENGES}
+    \begin{itemize}
+         \item[$\bullet$]While integrating gamecode with the UI we faced difficulties.
+         \item[$\bullet$] As instructions for individual deck are different,it was hard for comparing the cards.
+    \end{itemize}
+\end{frame}
+\begin{frame}{References with links}
+\begin{itemize}
+        \item[$\bullet$] \href{https://www.pygame.org/docs/}{Pygame Documentation}
+        \item[$\bullet$] \href{https://docs.python.org/3/tutorial/}{Python Documentation}
+        
+    \end{itemize}
+\end{frame}
+\begin{frame}{STATISTICS}\includegraphics{Statistics1.png}
+\end{frame}
+\begin{frame}{Git Repository}
+\begin{figure}
+\includegraphics[width=10cm]{GitRepo.png}
+\end{figure}
+\end{frame}
+\begin{frame}{PLAYERS BIDDING CARDS WITH DIAMOND CARD}
+\begin{figure}
+\includegraphics[width=10cm]{Demo.jpeg}
+\end{figure}
+\end{frame}
+\begin{frame}{START SCREEN}
+\begin{figure}
+\includegraphics[width=10cm]{title screen.png}
+\end{figure}
+\end{frame}
+\begin{frame}{SHOWING PLAYERS CARDS}
+\begin{figure}
+\includegraphics[width=10cm]{game window.png}
+\end{figure}
+\end{frame}
+\begin{frame}{EXIT SCREEN}
+\begin{figure}
+\includegraphics[width=10cm]{end screen.png}
+\end{figure}
+\end{frame}
+
+\begin{frame}
+    \center{\LARGE{\textbf{THANK YOU}}}
+\end{frame}
+
+
+\end{document}

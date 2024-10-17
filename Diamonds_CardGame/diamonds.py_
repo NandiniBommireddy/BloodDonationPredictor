@@ -1,0 +1,128 @@
+import random
+rankname = ["2", "3", "4", "5", "6", "7", "8", "9", "10", "ace", "king", "queen", "jack"]
+suits = ["hearts", "spades", "clubs"]
+
+#Deck of shuffled diamond cards
+def diamond_deck():
+    diamond_deck = []
+    for i in range(len(rankname)):
+        diamond_deck.append("{}_of_diamonds".format(rankname[i]))
+        random.shuffle(diamond_deck)
+    return diamond_deck
+
+#Deck of all other shuffled suit cards
+def decks():
+    deck = []
+    for i in range(len(rankname)):
+        for j in range(len(suits)):
+            deck.append("{}_of_{}".format(rankname[i], suits[j]))
+            random.shuffle(deck)
+    return deck
+
+#Assigning values to cards
+def card_value(rank):
+    value = {"2" : 2, "3" : 3, "4" : 4, "5" : 5, "6" : 6, "7" : 7, "8" : 8, "9" : 9, "1" : 10, "k" : 10, "q" : 10, "j" : 10, "a" : 11}
+    return value[rank]
+
+#Assigning Points diamond cards
+def diamond_points(rank):
+    points = {"2" : 3, "3" : 3, "4" : 3, "5" : 3, "6" : 3, "7" : 3, "8" : 3, "9" : 3, "1" : 3, "a" : 20, "k" : 10, "q" : 10, "j" : 10}
+    return points[rank]
+
+#Winner
+def winner(s1, s2, s3):
+    if max(s1, s2, s3) == s1 and max(s1, s2, s3) == s2:
+        return("yay {} and {} are the winners".format(p1, p2))
+    elif max(s1, s2, s3) == s2 and max(s1, s2, s3) == s3:
+        return("yay {} and {} are the winners".format(p2, p3))
+    elif max(s1, s2, s3) == s1 and max(s1, s2, s3) == s3:
+        return("yay {} and {} are the winners".format(p1, p3))
+    elif max(s1, s2, s3) == s1 and max(s1, s2, s3) == s2 and max(s1, s2, s3) == s3:
+        return("yay {}, {} and {} are the winners".format(p1, p2, p3))
+    elif max(s1, s2, s3) == s1:
+        return("yay {} is the winner".format(p1))
+    elif max(s1, s2, s3) == s2:
+         return("yay {} is the winner".format(p2))
+    elif max(s1, s2, s3) == s3:
+        return("yay {} is the winner".format(p3))
+    
+
+
+print("Diamond deck = ", diamond_deck())
+print("Deck = ", decks())
+
+#Players
+print("Enter player names\n") 
+p1 = input("player1:")
+p2 = input("player2:")
+p3 = input("player3:")
+
+d = decks()
+#Deck_distribution
+p1_cards = d[:40:3]
+p2_cards = d[1:40:3]
+p3_cards = d[2:40:3]
+player1_cards =  "{} = {}\n".format(p1, p1_cards)
+print(player1_cards)
+
+
+#Game
+score1, score2, score3 = 0, 0, 0
+d = diamond_deck()
+#Comparing card values for different cases
+for _ in range(13):
+#Banker picking diamond card
+    diamond_pick = random.choice(d)
+    print("Diamond card picked by banker: ",diamond_pick)
+
+#PLayers picking their cards
+    play1_pick = input("Enter card picked: ") 
+    play2_pick = random.choice(p2_cards)
+    play3_pick = random.choice(p3_cards)
+    print("card picked by player1:",play1_pick)
+    print("card picked by player2:",play2_pick)
+    print("card picked by player3:",play3_pick)
+    p1_value = card_value(play1_pick[0])
+    p2_value = card_value(play2_pick[0])
+    p3_value = card_value(play3_pick[0])
+    point = diamond_points(diamond_pick[0])
+    if max(p1_value, p2_value, p3_value) == p1_value and max(p1_value, p2_value, p3_value) == p2_value:
+        print("Its a tie for {} and {}".format(p1, p2))
+        score1 += point/2
+        score2 += point/2
+    elif max(p1_value, p2_value, p3_value) == p2_value and max(p1_value, p2_value, p3_value) == p3_value:
+        print("Its a tie for {} and {}".format(p2, p3))
+        score2 += point/2
+        score3 += point/2
+    elif max(p1_value, p2_value, p3_value) == p3_value and max(p1_value, p2_value, p3_value) == p1_value:
+        print("Its a tie for {} and {}".format(p1, p3))
+        score1 += point/2
+        score3 += point/2
+    elif max(p1_value, p2_value, p3_value) == p1_value and max(p1_value, p2_value, p3_value) == p2_value and max(p1_value, p2_value, p3_value) == p3_value:
+        print("Its a tie for {}, {} and {}".format(p1, p2, p3))
+        score1 += point/3
+        score2 += point/3
+        score3 += point/3
+    elif max(p1_value, p2_value, p3_value) == p1_value:
+        print("{} wins {}".format(p1, diamond_pick))
+        score1 += point
+    elif max(p1_value, p2_value, p3_value) == p2_value:
+        print("{} wins {}".format(p2, diamond_pick))
+        score2 += point
+    elif max(p1_value, p2_value, p3_value) == p3_value:
+        print("{} wins {}".format(p3, diamond_pick))
+        score3 += point
+    
+    d.remove(diamond_pick)
+    p1_cards.remove(play1_pick)
+    p2_cards.remove(play2_pick)
+    p3_cards.remove(play3_pick)
+    print("a = ", p1_cards)
+    print("Want to continue, if yes click y else click n")
+    t = input()
+    if t == "y":
+        pass
+    else:
+        break
+
+print(winner(score1, score2, score3))
